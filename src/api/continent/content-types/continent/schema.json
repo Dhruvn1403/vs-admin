@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "continents",
+  "info": {
+    "singularName": "continent",
+    "pluralName": "continents",
+    "displayName": "Continent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "countries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::country.country"
+    }
+  }
+}
