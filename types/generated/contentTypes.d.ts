@@ -535,6 +535,7 @@ export interface ApiContinentContinent extends Struct.CollectionTypeSchema {
 export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
   collectionName: 'countries';
   info: {
+    description: '';
     displayName: 'Country';
     pluralName: 'countries';
     singularName: 'country';
@@ -555,6 +556,7 @@ export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    Section: Schema.Attribute.DynamicZone<['shared.section']>;
     show_on_home: Schema.Attribute.Boolean;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
