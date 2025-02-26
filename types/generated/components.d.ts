@@ -31,18 +31,23 @@ export interface SharedRichText extends Struct.ComponentSchema {
     icon: 'align-justify';
   };
   attributes: {
-    body: Schema.Attribute.RichText;
+    body: Schema.Attribute.Blocks;
   };
 }
 
 export interface SharedSection extends Struct.ComponentSchema {
   collectionName: 'components_shared_sections';
   info: {
+    description: '';
     displayName: 'Section';
     icon: 'book';
   };
   attributes: {
     description: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     title: Schema.Attribute.String;
   };
 }

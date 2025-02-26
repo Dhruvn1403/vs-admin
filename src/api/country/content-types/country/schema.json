@@ -14,20 +14,6 @@
     "name": {
       "type": "string"
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "show_on_home": {
-      "type": "boolean"
-    },
     "Section": {
       "type": "dynamiczone",
       "components": [
