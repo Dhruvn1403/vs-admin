@@ -19,6 +19,12 @@
       "components": [
         "shared.section"
       ]
+    },
+    "visa_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visa-category.visa-category",
+      "mappedBy": "country"
     }
   }
 }

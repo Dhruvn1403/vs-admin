@@ -556,6 +556,10 @@ export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    visa_categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visa-category.visa-category'
+    >;
   };
 }
 
@@ -625,6 +629,50 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
         },
         number
       >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVisaCategoryVisaCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'visa_categories';
+  info: {
+    description: '';
+    displayName: 'Visa Category';
+    pluralName: 'visa-categories';
+    singularName: 'visa-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<['work', 'study', 'immigrate']>;
+    content: Schema.Attribute.DynamicZone<
+      [
+        'shared.slider',
+        'shared.seo',
+        'shared.section',
+        'shared.rich-text',
+        'shared.quote',
+        'shared.media',
+        'shared.faq',
+        'shared.content',
+      ]
+    >;
+    country: Schema.Attribute.Relation<'manyToOne', 'api::country.country'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FAQ: Schema.Attribute.Component<'shared.faq', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visa-category.visa-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1148,6 +1196,7 @@ declare module '@strapi/strapi' {
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::visa-category.visa-category': ApiVisaCategoryVisaCategory;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

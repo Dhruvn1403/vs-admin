@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visa_categories",
+  "info": {
+    "singularName": "visa-category",
+    "pluralName": "visa-categories",
+    "displayName": "Visa Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.slider",
+        "shared.seo",
+        "shared.section",
+        "shared.rich-text",
+        "shared.quote",
+        "shared.media",
+        "shared.faq",
+        "shared.content"
+      ]
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "visa_categories"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "work",
+        "study",
+        "immigrate"
+      ]
+    },
+    "FAQ": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.faq"
+    }
+  }
+}
