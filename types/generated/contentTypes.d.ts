@@ -595,6 +595,33 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHeroHero extends Struct.CollectionTypeSchema {
+  collectionName: 'heroes';
+  info: {
+    displayName: 'Hero';
+    pluralName: 'heroes';
+    singularName: 'hero';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
@@ -1195,6 +1222,7 @@ declare module '@strapi/strapi' {
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;
+      'api::hero.hero': ApiHeroHero;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::visa-category.visa-category': ApiVisaCategoryVisaCategory;
       'plugin::content-releases.release': PluginContentReleasesRelease;
