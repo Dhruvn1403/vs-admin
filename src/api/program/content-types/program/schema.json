@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programs",
+  "info": {
+    "singularName": "program",
+    "pluralName": "programs",
+    "displayName": "Program",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "visa_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::visa-category.visa-category",
+      "inversedBy": "programs"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "FAQ": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.faq"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

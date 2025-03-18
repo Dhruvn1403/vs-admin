@@ -14,14 +14,7 @@
     "content": {
       "type": "dynamiczone",
       "components": [
-        "shared.slider",
-        "shared.seo",
-        "shared.section",
-        "shared.rich-text",
-        "shared.quote",
-        "shared.media",
-        "shared.faq",
-        "shared.content"
+        "shared.rich-text"
       ]
     },
     "country": {
@@ -42,6 +35,22 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.faq"
+    },
+    "programs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::program.program",
+      "mappedBy": "visa_category"
+    },
+    "backgroundImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

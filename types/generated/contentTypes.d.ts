@@ -622,6 +622,45 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
+  collectionName: 'programs';
+  info: {
+    description: '';
+    displayName: 'Program';
+    pluralName: 'programs';
+    singularName: 'program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    backgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FAQ: Schema.Attribute.Component<'shared.faq', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::program.program'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    visa_category: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::visa-category.visa-category'
+    >;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
@@ -675,19 +714,11 @@ export interface ApiVisaCategoryVisaCategory
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<['work', 'study', 'immigrate']>;
-    content: Schema.Attribute.DynamicZone<
-      [
-        'shared.slider',
-        'shared.seo',
-        'shared.section',
-        'shared.rich-text',
-        'shared.quote',
-        'shared.media',
-        'shared.faq',
-        'shared.content',
-      ]
+    backgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
     >;
+    category: Schema.Attribute.Enumeration<['work', 'study', 'immigrate']>;
+    content: Schema.Attribute.DynamicZone<['shared.rich-text']>;
     country: Schema.Attribute.Relation<'manyToOne', 'api::country.country'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -699,6 +730,7 @@ export interface ApiVisaCategoryVisaCategory
       'api::visa-category.visa-category'
     > &
       Schema.Attribute.Private;
+    programs: Schema.Attribute.Relation<'oneToMany', 'api::program.program'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1223,6 +1255,7 @@ declare module '@strapi/strapi' {
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;
       'api::hero.hero': ApiHeroHero;
+      'api::program.program': ApiProgramProgram;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::visa-category.visa-category': ApiVisaCategoryVisaCategory;
       'plugin::content-releases.release': PluginContentReleasesRelease;
