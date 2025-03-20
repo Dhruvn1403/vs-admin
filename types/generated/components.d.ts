@@ -12,10 +12,11 @@ export interface SharedContent extends Struct.ComponentSchema {
 export interface SharedFaq extends Struct.ComponentSchema {
   collectionName: 'components_shared_faqs';
   info: {
+    description: '';
     displayName: 'FAQ';
   };
   attributes: {
-    answer: Schema.Attribute.Text;
+    answer: Schema.Attribute.Blocks;
     question: Schema.Attribute.Text;
   };
 }

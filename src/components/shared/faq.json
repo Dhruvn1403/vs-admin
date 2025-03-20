@@ -1,7 +1,8 @@
 {
   "collectionName": "components_shared_faqs",
   "info": {
-    "displayName": "FAQ"
+    "displayName": "FAQ",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,7 +10,7 @@
       "type": "text"
     },
     "answer": {
-      "type": "text"
+      "type": "blocks"
     }
   }
 }

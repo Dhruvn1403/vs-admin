@@ -27,20 +27,21 @@
     "content": {
       "type": "blocks"
     },
-    "FAQ": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.faq"
-    },
     "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "FAQ": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.faq"
     }
   }
 }
