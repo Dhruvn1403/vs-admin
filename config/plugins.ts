@@ -6,7 +6,8 @@ export default ({ env }) => ({
           cloud_name: env("CLOUDINARY_NAME"),
           api_key: env("CLOUDINARY_KEY"),
           api_secret: env("CLOUDINARY_SECRET"),
-          secure: true, // ✅ Forces HTTPS connections
+          secure: false, // ✅ Forces HTTPS connections
+          maxFileSize: 10 * 1024 * 1024, // 10MB limit
         },
         actionOptions: {
           upload: {},
