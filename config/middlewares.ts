@@ -25,13 +25,13 @@ export default [
   'strapi::poweredBy',
   'strapi::query',
   {
-    name: 'strapi::body',
+    name: "strapi::body",
     config: {
-      formidable: {
-        maxFileSize: 10 * 1024 * 1024, // 10MB limit
-      },
+      jsonLimit: "15mb",  // Adjust as needed
+      formLimit: "100mb",
+      textLimit: "100mb",
     },
-  },
+},
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
