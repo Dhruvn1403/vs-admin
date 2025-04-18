@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vs_users",
+  "info": {
+    "singularName": "vs-user",
+    "pluralName": "vs-users",
+    "displayName": "vs_user"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "lead_id": {
+      "type": "uid"
+    }
+  }
+}
