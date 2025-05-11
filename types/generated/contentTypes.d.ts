@@ -499,6 +499,40 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiConsultationPackageConsultationPackage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'consultation_packages';
+  info: {
+    displayName: 'consultation-package';
+    pluralName: 'consultation-packages';
+    singularName: 'consultation-package';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['Skilled Migration', 'Work Permit', 'Student Visa', 'Multiple Category']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    duration: Schema.Attribute.Integer;
+    fee: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::consultation-package.consultation-package'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContinentContinent extends Struct.CollectionTypeSchema {
   collectionName: 'continents';
   info: {
@@ -1280,6 +1314,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::consultation-package.consultation-package': ApiConsultationPackageConsultationPackage;
       'api::continent.continent': ApiContinentContinent;
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;

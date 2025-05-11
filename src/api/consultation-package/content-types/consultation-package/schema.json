@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consultation_packages",
+  "info": {
+    "singularName": "consultation-package",
+    "pluralName": "consultation-packages",
+    "displayName": "consultation-package"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Skilled Migration",
+        "Work Permit",
+        "Student Visa",
+        "Multiple Category"
+      ]
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "fee": {
+      "type": "integer"
+    }
+  }
+}
