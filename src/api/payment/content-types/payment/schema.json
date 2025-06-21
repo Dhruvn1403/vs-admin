@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "payment_purpose": {
+      "type": "enumeration",
+      "enum": [
+        "Consultation",
+        "Assessment",
+        "Process"
+      ]
+    },
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "Credit Card",
+        "Debit Card",
+        "UPI"
+      ]
+    },
+    "transaction_id": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "₹ (Indian Rupee)",
+        "$ (Dollar)",
+        "€ (Euro)",
+        "CAD (Canadian Dollar)",
+        "AUD (Australian Dollar)",
+        "¢ (Cent)",
+        "£ (British Pound Sterling)",
+        "¥ (Japanese Yen / Chinese Yuan)",
+        "₩ (South Korean Won)",
+        "₽ (Russian Ruble)",
+        "₺ (Turkish Lira)",
+        "C$ (Canadian Dollar)",
+        "R$ (Brazilian Real)",
+        "Mex$ (Mexican Peso)",
+        "B/. (Panamanian Balboa)",
+        "Bs. (Venezuelan Bolívar)",
+        "G$ (Guyanese Dollar)",
+        "₲ (Paraguayan Guarani)",
+        "Kč (Czech Koruna)",
+        "zł (Polish Zloty)",
+        "kr (Swedish/Norwegian Krona)",
+        "лв (Bulgarian Lev)",
+        "Ft (Hungarian Forint)",
+        "₴ (Ukrainian Hryvnia)",
+        "ден (Macedonian Denar)",
+        "元 (Chinese Yuan Renminbi)",
+        "Rp (Indonesian Rupiah)",
+        "RM (Malaysian Ringgit)",
+        "฿ (Thai Baht)",
+        "₫ (Vietnamese Dong)",
+        "₸ (Kazakhstani Tenge)",
+        "R (South African Rand)",
+        "₦ (Nigerian Naira)",
+        "KSh (Kenyan Shilling)",
+        "GHS (Ghanaian Cedi)",
+        "USh (Ugandan Shilling)",
+        "TSh (Tanzanian Shilling)",
+        "﷼ (Rial - used in Iran, Saudi Arabia, Yemen)",
+        "د.إ (UAE Dirham)",
+        "د.ك (Kuwaiti Dinar)",
+        "ل.ل (Lebanese Pound)",
+        "د.ب (Bahraini Dinar)",
+        "د.ع (Iraqi Dinar)",
+        "ج.م (Egyptian Pound)"
+      ]
+    },
+    "amount": {
+      "type": "integer"
+    }
+  }
+}

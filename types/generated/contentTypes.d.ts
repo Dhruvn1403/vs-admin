@@ -1020,6 +1020,90 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
+  collectionName: 'payments';
+  info: {
+    displayName: 'Payment';
+    pluralName: 'payments';
+    singularName: 'payment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.Enumeration<
+      [
+        '\u20B9 (Indian Rupee)',
+        '$ (Dollar)',
+        '\u20AC (Euro)',
+        'CAD (Canadian Dollar)',
+        'AUD (Australian Dollar)',
+        '\u00A2 (Cent)',
+        '\u00A3 (British Pound Sterling)',
+        '\u00A5 (Japanese Yen / Chinese Yuan)',
+        '\u20A9 (South Korean Won)',
+        '\u20BD (Russian Ruble)',
+        '\u20BA (Turkish Lira)',
+        'C$ (Canadian Dollar)',
+        'R$ (Brazilian Real)',
+        'Mex$ (Mexican Peso)',
+        'B/. (Panamanian Balboa)',
+        'Bs. (Venezuelan Bol\u00EDvar)',
+        'G$ (Guyanese Dollar)',
+        '\u20B2 (Paraguayan Guarani)',
+        'K\u010D (Czech Koruna)',
+        'z\u0142 (Polish Zloty)',
+        'kr (Swedish/Norwegian Krona)',
+        '\u043B\u0432 (Bulgarian Lev)',
+        'Ft (Hungarian Forint)',
+        '\u20B4 (Ukrainian Hryvnia)',
+        '\u0434\u0435\u043D (Macedonian Denar)',
+        '\u5143 (Chinese Yuan Renminbi)',
+        'Rp (Indonesian Rupiah)',
+        'RM (Malaysian Ringgit)',
+        '\u0E3F (Thai Baht)',
+        '\u20AB (Vietnamese Dong)',
+        '\u20B8 (Kazakhstani Tenge)',
+        'R (South African Rand)',
+        '\u20A6 (Nigerian Naira)',
+        'KSh (Kenyan Shilling)',
+        'GHS (Ghanaian Cedi)',
+        'USh (Ugandan Shilling)',
+        'TSh (Tanzanian Shilling)',
+        '\uFDFC (Rial - used in Iran, Saudi Arabia, Yemen)',
+        '\u062F.\u0625 (UAE Dirham)',
+        '\u062F.\u0643 (Kuwaiti Dinar)',
+        '\u0644.\u0644 (Lebanese Pound)',
+        '\u062F.\u0628 (Bahraini Dinar)',
+        '\u062F.\u0639 (Iraqi Dinar)',
+        '\u062C.\u0645 (Egyptian Pound)',
+      ]
+    >;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::payment.payment'
+    > &
+      Schema.Attribute.Private;
+    payment_method: Schema.Attribute.Enumeration<
+      ['Credit Card', 'Debit Card', 'UPI']
+    >;
+    payment_purpose: Schema.Attribute.Enumeration<
+      ['Consultation', 'Assessment', 'Process']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    transaction_id: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
   collectionName: 'programs';
   info: {
@@ -1683,6 +1767,7 @@ declare module '@strapi/strapi' {
       'api::country.country': ApiCountryCountry;
       'api::global.global': ApiGlobalGlobal;
       'api::hero.hero': ApiHeroHero;
+      'api::payment.payment': ApiPaymentPayment;
       'api::program.program': ApiProgramProgram;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::visa-category.visa-category': ApiVisaCategoryVisaCategory;
