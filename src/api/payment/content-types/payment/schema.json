@@ -4,7 +4,8 @@
   "info": {
     "singularName": "payment",
     "pluralName": "payments",
-    "displayName": "Payment"
+    "displayName": "Payment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -83,6 +84,12 @@
     },
     "amount": {
       "type": "integer"
+    },
+    "vs_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::vs-user.vs-user",
+      "inversedBy": "payments"
     }
   }
 }

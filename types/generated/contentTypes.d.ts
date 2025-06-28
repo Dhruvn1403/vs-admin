@@ -1023,6 +1023,7 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
 export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
   collectionName: 'payments';
   info: {
+    description: '';
     displayName: 'Payment';
     pluralName: 'payments';
     singularName: 'payment';
@@ -1101,6 +1102,7 @@ export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    vs_user: Schema.Attribute.Relation<'manyToOne', 'api::vs-user.vs-user'>;
   };
 }
 
@@ -1242,6 +1244,7 @@ export interface ApiVsUserVsUser extends Struct.CollectionTypeSchema {
       'api::vs-user.vs-user'
     > &
       Schema.Attribute.Private;
+    payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

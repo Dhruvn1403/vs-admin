@@ -15,6 +15,12 @@
     },
     "lead_id": {
       "type": "uid"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "vs_user"
     }
   }
 }
