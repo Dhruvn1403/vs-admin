@@ -90,6 +90,12 @@
       "relation": "manyToOne",
       "target": "api::vs-user.vs-user",
       "inversedBy": "payments"
+    },
+    "country": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
     }
   }
 }
