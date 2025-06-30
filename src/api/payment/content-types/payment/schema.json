@@ -96,6 +96,9 @@
     },
     "category": {
       "type": "string"
+    },
+    "payment_receipt_url": {
+      "type": "string"
     }
   }
 }

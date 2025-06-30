@@ -1099,6 +1099,7 @@ export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
     payment_purpose: Schema.Attribute.Enumeration<
       ['Consultation', 'Assessment', 'Process']
     >;
+    payment_receipt_url: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     transaction_id: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
