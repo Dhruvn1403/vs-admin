@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "programs",
+  "collectionName": "subprograms",
   "info": {
-    "singularName": "program",
-    "pluralName": "programs",
-    "displayName": "Program",
+    "singularName": "subprogram",
+    "pluralName": "subprograms",
+    "displayName": "Subprogram",
     "description": ""
   },
   "options": {
@@ -18,11 +18,11 @@
       "type": "uid",
       "targetField": "name"
     },
-    "visa_category": {
+    "program": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::visa-category.visa-category",
-      "inversedBy": "programs"
+      "target": "api::program.program",
+      "inversedBy": "subprograms"
     },
     "content": {
       "type": "blocks"
@@ -42,12 +42,6 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.faq"
-    },
-    "subprograms": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::subprogram.subprogram",
-      "mappedBy": "program"
     }
   }
 }

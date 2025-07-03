@@ -780,7 +780,9 @@ export interface ApiConsultationPackageConsultationPackage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    discount: Schema.Attribute.Boolean;
+    discount: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     discount_amount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     duration_in_number: Schema.Attribute.Integer;
     duration_unit: Schema.Attribute.Enumeration<['minutes', 'hours']>;
@@ -1138,6 +1140,10 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    subprograms: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subprogram.subprogram'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1145,6 +1151,42 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::visa-category.visa-category'
     >;
+  };
+}
+
+export interface ApiSubprogramSubprogram extends Struct.CollectionTypeSchema {
+  collectionName: 'subprograms';
+  info: {
+    description: '';
+    displayName: 'Subprogram';
+    pluralName: 'subprograms';
+    singularName: 'subprogram';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    backgroundImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FAQ: Schema.Attribute.Component<'shared.faq', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subprogram.subprogram'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    program: Schema.Attribute.Relation<'manyToOne', 'api::program.program'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1775,6 +1817,7 @@ declare module '@strapi/strapi' {
       'api::hero.hero': ApiHeroHero;
       'api::payment.payment': ApiPaymentPayment;
       'api::program.program': ApiProgramProgram;
+      'api::subprogram.subprogram': ApiSubprogramSubprogram;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::visa-category.visa-category': ApiVisaCategoryVisaCategory;
       'api::vs-user.vs-user': ApiVsUserVsUser;
