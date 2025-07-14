@@ -9,10 +9,8 @@ export default ({ env }) => ({
       database: env("DATABASE_NAME"),
       user: env("DATABASE_USERNAME"),
       password: env("DATABASE_PASSWORD"),
-      ssl: {
-        ca: path.join(__dirname, "..", "..", "config", "certs", "ca.pem"),
-        rejectUnauthorized: false, // Allow self-signed certificates
-      },
+      ssl: false
     },
   },
 });
+
